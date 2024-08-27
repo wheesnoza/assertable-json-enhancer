@@ -1,0 +1,26 @@
+{
+    "name": "wheesnoza/laravel-assertable-inertia-enhancer",
+    "description": "A AssertableInertia Enhancer for more assertions.",
+    "type": "library",
+    "license": "MIT",
+    "version": "1.0.0",
+    "autoload": {
+        "psr-4": {
+            "AssertableJsonEnhancer\\": "src/",
+            "Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "wheesnoza"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require-dev": {
+        "phpunit/phpunit": "^11.3",
+        "orchestra/testbench": "^9.4"
+    },
+    "require": {
+        "inertiajs/inertia-laravel": "^1.3"
+    }
+}
