@@ -20,6 +20,14 @@ This package is fully compatible with Laravel Inertia's `AssertableInertia`. You
 
 ## Available Methods
 
+### Table of Contents
+1. [whereValueContains](#1-wherevaluecontainsstring-key-string-value)
+2. [whereGreaterThan](#2-wheregreaterthanstring-key-int-value)
+3. [whereGreaterThanOrEqual](#3-wheregreaterthanorequalstring-key-int-value)
+4. [whereIsArray](#4-whereisarraystring-key)
+5. [whereArrayHasAtLeast](#5-wherearrayhasatleaststring-key-int-mincount)
+6. [whereMatchesPattern](#6-wherematchespatternstring-key-string-pattern)
+
 ### 1. `whereValueContains(string $key, string $value)`
 
 Asserts that the value associated with the specified key contains a particular substring.
