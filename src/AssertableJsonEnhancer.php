@@ -3,7 +3,6 @@
 namespace AssertableJsonEnhancer;
 
 use Closure;
-use Illuminate\Support\Arr;
 use PHPUnit\Framework\Assert;
 use Illuminate\Support\Str;
 use Illuminate\Testing\Fluent\AssertableJson;
@@ -14,11 +13,10 @@ class AssertableJsonEnhancer
     {
         return function (string $key, string $value) {
             /** @var AssertableJson $this */
-            $property = Arr::get($this->toArray(), $key);
+            $property = $this->prop($key);
 
             $assertion = Str::of($property)->contains($value);
-
-            Assert::assertTrue($assertion, sprintf("[%s] did not contain [%s].", $property, $value));
+            Assert::assertTrue($assertion, sprintf("%s did not contain %s.", $key, $value));
 
             return $this;
         };
@@ -28,7 +26,7 @@ class AssertableJsonEnhancer
     {
         return function (string $key, int $value) {
             /** @var AssertableJson $this */
-            $property = Arr::get($this->toArray(), $key);
+            $property = $this->prop($key);
 
             Assert::assertGreaterThan($value, $property, sprintf("%s is not greater than %d", $key, $value));
 
@@ -40,7 +38,7 @@ class AssertableJsonEnhancer
     {
         return function (string $key, int $value) {
             /** @var AssertableJson $this */
-            $property = Arr::get($this->toArray(), $key);
+            $property = $this->prop($key);
 
             Assert::assertGreaterThanOrEqual($property, $value, sprintf("%s with value of %d is not equal to %d or greater than %d", $key, $property, $value, $value));
 
@@ -52,7 +50,7 @@ class AssertableJsonEnhancer
     {
         return function (string $key) {
             /** @var AssertableJson $this */
-            $property = Arr::get($this->toArray(), $key);
+            $property = $this->prop($key);
 
             Assert::assertIsArray($property, sprintf("%s are not an array.", $key));
 
@@ -64,7 +62,7 @@ class AssertableJsonEnhancer
     {
         return function (string $key, int $minCount) {
             /** @var AssertableJson $this */
-            $property = Arr::get($this->toArray(), $key);
+            $property = $this->prop($key);
 
             Assert::assertTrue(
                 is_array($property) && count($property) >= $minCount,
@@ -79,7 +77,7 @@ class AssertableJsonEnhancer
     {
         return function (string $key, string $pattern) {
             /** @var AssertableJson $this */
-            $property = Arr::get($this->toArray(), $key);
+            $property = $this->prop($key);
 
             Assert::assertMatchesRegularExpression(
                 $pattern,
