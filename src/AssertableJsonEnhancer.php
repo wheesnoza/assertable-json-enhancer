@@ -12,7 +12,10 @@ class AssertableJsonEnhancer
     public function whereValueContains(): Closure
     {
         return function (string $key, string $value) {
-            /** @var AssertableJson $this */
+            /** 
+             * @var AssertableJson $this
+             * @phpstan-ignore-next-line
+             */
             $property = $this->prop($key);
 
             $assertion = Str::of($property)->contains($value);
@@ -29,7 +32,10 @@ class AssertableJsonEnhancer
     public function whereGreaterThan(): Closure
     {
         return function (string $key, int $value) {
-            /** @var AssertableJson $this */
+            /** 
+             * @var AssertableJson $this
+             * @phpstan-ignore-next-line
+             */
             $property = $this->prop($key);
 
             Assert::assertGreaterThan(
@@ -45,7 +51,10 @@ class AssertableJsonEnhancer
     public function whereGreaterThanOrEqual(): Closure
     {
         return function (string $key, int $value) {
-            /** @var AssertableJson $this */
+            /** 
+             * @var AssertableJson $this
+             * @phpstan-ignore-next-line
+             */
             $property = $this->prop($key);
 
             Assert::assertGreaterThanOrEqual(
@@ -61,7 +70,10 @@ class AssertableJsonEnhancer
     public function whereIsArray(): Closure
     {
         return function (string $key) {
-            /** @var AssertableJson $this */
+            /** 
+             * @var AssertableJson $this
+             * @phpstan-ignore-next-line
+             */
             $property = $this->prop($key);
 
             Assert::assertIsArray(
@@ -76,7 +88,10 @@ class AssertableJsonEnhancer
     public function whereArrayHasAtLeast(): Closure
     {
         return function (string $key, int $minCount) {
-            /** @var AssertableJson $this */
+            /** 
+             * @var AssertableJson $this
+             * @phpstan-ignore-next-line
+             */
             $property = $this->prop($key);
 
             $assertion = is_array($property) && count($property) >= $minCount;
@@ -93,7 +108,10 @@ class AssertableJsonEnhancer
     public function whereMatchesPattern(): Closure
     {
         return function (string $key, string $pattern) {
-            /** @var AssertableJson $this */
+            /** 
+             * @var AssertableJson $this
+             * @phpstan-ignore-next-line
+             */
             $property = $this->prop($key);
 
             Assert::assertMatchesRegularExpression(
