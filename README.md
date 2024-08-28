@@ -94,4 +94,4 @@ Contributions are welcome! Feel free to submit bug reports or pull requests. If 
 
 ## License
 
-This package is open-sourced software licensed under the MIT license. Please see the `LICENSE` file for more details.
+This package is open-sourced software licensed under the MIT license.
