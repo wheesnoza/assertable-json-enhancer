@@ -28,7 +28,7 @@ jobs:
         tools: composer
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest --no-interaction
+      run: composer install --prefer-dist --no-progress --no-interaction
 
     - name: Run PHPUnit tests
       run: vendor/bin/phpunit
