@@ -14,8 +14,8 @@ jobs:
 
     strategy:
       matrix:
-        php-version: ['8.2', '8.3']
-        laravel-version: ['9.x', '10.x', '11.x']
+        php-version: ['8.0', '8.1', '8.2', '8.3']
+        laravel-version: ['10.x', '11.x']
 
     steps:
       - name: Checkout code
