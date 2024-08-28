@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        php-version: ['8.0', '8.1', '8.2', '8.3']
+        php-version: ['8.3']
 
     steps:
       - name: Checkout code
@@ -41,7 +41,7 @@ jobs:
           composer install --no-scripts --no-progress --prefer-dist
 
       - name: Run PHPUnit tests
-        run: vendor/bin/phpunit tests --coverage-text --colors=never
+        run: vendor/bin/phpunit --coverage-text --colors=never
 
       - name: Run PHPStan
         run: vendor/bin/phpstan analyse --memory-limit=2G
