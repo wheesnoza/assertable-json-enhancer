@@ -1,6 +1,6 @@
 {
     "name": "wheesnoza/laravel-assertable-inertia-enhancer",
-    "description": "A AssertableInertia Enhancer for more assertions.",
+    "description": "A Laravel Assertable Json Enhancer Adding More Assertions Functions.",
     "type": "library",
     "license": "MIT",
     "version": "1.0.0",

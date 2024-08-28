@@ -97,4 +97,94 @@ class AssertableJsonEnhancerTest extends TestCase
             ->etc()
         );
     }
+
+    public function test_where_is_array_should_be_true(): void
+    {
+        app('router')->get('/', fn () => ['products' => ['a', 'b', 'c']]);
+
+        $response = $this->get('/');
+
+        $response->assertOk();
+
+        $response->assertJson(fn (Assert $json) => $json
+            ->whereIsArray('products')
+            ->etc()
+        );
+    }
+
+    public function test_where_is_array_should_be_false(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+
+        app('router')->get('/', fn () => ['products' => 'a']);
+
+        $response = $this->get('/');
+
+        $response->assertOk();
+
+        $response->assertJson(fn (Assert $json) => $json
+            ->whereIsArray('products')
+            ->etc()
+        );
+    }
+
+    public function test_where_array_has_at_least_should_be_true(): void
+    {
+        app('router')->get('/', fn () => ['products' => ['a', 'b', 'c']]);
+
+        $response = $this->get('/');
+
+        $response->assertOk();
+
+        $response->assertJson(fn (Assert $json) => $json
+            ->whereArrayHasAtLeast('products', 3)
+            ->etc()
+        );
+    }
+
+    public function test_where_array_has_at_least_should_be_false(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+
+        app('router')->get('/', fn () => ['products' => ['a', 'b', 'c']]);
+
+        $response = $this->get('/');
+
+        $response->assertOk();
+
+        $response->assertJson(fn (Assert $json) => $json
+            ->whereArrayHasAtLeast('products', 4)
+            ->etc()
+        );
+    }
+
+    public function test_where_matches_pattern_should_be_true(): void
+    {
+        app('router')->get('/', fn () => ['email' => 'ezample@example.com']);
+
+        $response = $this->get('/');
+
+        $response->assertOk();
+
+        $response->assertJson(fn (Assert $json) => $json
+            ->whereMatchesPattern('email', '/^[\w\.-]+@[\w\.-]+\.\w{2,4}$/')
+            ->etc()
+        );
+    }
+
+    public function test_where_matches_pattern_should_be_false(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+
+        app('router')->get('/', fn () => ['email' => 'example.com']);
+
+        $response = $this->get('/');
+
+        $response->assertOk();
+
+        $response->assertJson(fn (Assert $json) => $json
+        ->whereMatchesPattern('email', '/^[\w\.-]+@[\w\.-]+\.\w{2,4}$/')
+            ->etc()
+        );
+    }
 }
