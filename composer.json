@@ -1,47 +1,45 @@
 {
-    "name": "wheesnoza/assertable-json-enhancer",
-    "description": "A Laravel Assertable Json Enhancer Adding More Assertions Functions.",
-    "type": "library",
-    "keywords": [
+  "name": "wheesnoza/assertable-json-enhancer",
+  "description": "A Laravel Assertable Json Enhancer Adding More Assertions Functions.",
+  "type": "library",
+  "keywords": [
       "php",
       "github",
       "laravel",
       "Open Source",
-      "laravel 9",
-      "laravel 10",
       "laravel 11"
-    ], 
-    "license": "MIT",
-    "version": "1.0.0",
-    "autoload": {
-        "psr-4": {
-            "AssertableJsonEnhancer\\": "src/",
-            "Tests\\": "tests/"
-        },
-        "classmap": ["src/"]
-    },
-    "authors": [
-        {
-            "name": "wheesnoza",
-            "email": "wheesnoza@gmail.com"
-        }
-    ],
-    "minimum-stability": "stable",
-    "require-dev": {
-        "phpunit/phpunit": "^11.3",
-        "orchestra/testbench": "^9.4",
-        "friendsofphp/php-cs-fixer": "^3.63",
-        "phpstan/phpstan": "^1.12"
-    },
-    "require": {
-        "php": "^8.0",
-        "laravel/framework": "^9.0|^10.0|^11.0"
-    },
-    "extra": {
-      "laravel": {
-        "providers": [
-          "AssertableJsonEnhancer\\ServiceProvider"
-        ]
+  ],
+  "license": "MIT",
+  "version": "1.0.0",
+  "autoload": {
+      "psr-4": {
+          "AssertableJsonEnhancer\\": "src/",
+          "Tests\\": "tests/"
+      },
+      "classmap": ["src/"]
+  },
+  "authors": [
+      {
+          "name": "wheesnoza",
+          "email": "wheesnoza@gmail.com"
       }
-    }
+  ],
+  "minimum-stability": "stable",
+  "require-dev": {
+      "phpunit/phpunit": "^11.3",
+      "orchestra/testbench": "^9.4",
+      "friendsofphp/php-cs-fixer": "^3.63",
+      "phpstan/phpstan": "^1.12"
+  },
+  "require": {
+      "php": "^8.3",
+      "laravel/framework": "^11.0"
+  },
+  "extra": {
+      "laravel": {
+          "providers": [
+              "AssertableJsonEnhancer\\ServiceProvider"
+          ]
+      }
+  }
 }
