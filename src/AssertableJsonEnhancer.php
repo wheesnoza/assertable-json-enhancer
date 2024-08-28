@@ -3,14 +3,15 @@
 namespace AssertableJsonEnhancer;
 
 use PHPUnit\Framework\Assert;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Illuminate\Testing\Fluent\AssertableJson;
 
 class AssertableJsonEnhancer
 {
     public function whereValueContains()
     {
         return function (string $key, string $value) {
+            /** @var AssertableJson $this */
             $property = $this->prop($key);
 
             $assertion = Str::of($property)->contains($value);
@@ -24,6 +25,7 @@ class AssertableJsonEnhancer
     public function whereGreaterThan()
     {
         return function (string $key, int $value) {
+            /** @var AssertableJson $this */
             $property = $this->prop($key);
 
             Assert::assertGreaterThan($value, $property, sprintf("%s is not greater than %d", $key, $value));
@@ -35,6 +37,7 @@ class AssertableJsonEnhancer
     public function whereGreaterThanOrEqual()
     {
         return function (string $key, int $value) {
+            /** @var AssertableJson $this */
             $property = $this->prop($key);
 
             Assert::assertGreaterThanOrEqual($property, $value, sprintf("%s with value of %d is not equal to %d or greater than %d", $key, $property, $value, $value));
@@ -46,6 +49,7 @@ class AssertableJsonEnhancer
     public function whereIsArray()
     {
         return function (string $key) {
+            /** @var AssertableJson $this */
             $property = $this->prop($key);
 
             Assert::assertIsArray($property, sprintf("%s are not an array.", $key));
@@ -57,6 +61,7 @@ class AssertableJsonEnhancer
     public function whereArrayHasAtLeast()
     {
         return function (string $key, int $minCount) {
+            /** @var AssertableJson $this */
             $property = $this->prop($key);
 
             Assert::assertTrue(
@@ -71,6 +76,7 @@ class AssertableJsonEnhancer
     public function whereMatchesPattern()
     {
         return function (string $key, string $pattern) {
+            /** @var AssertableJson $this */
             $property = $this->prop($key);
 
             Assert::assertMatchesRegularExpression(
