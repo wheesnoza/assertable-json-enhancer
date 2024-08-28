@@ -9,28 +9,37 @@ on:
       - main
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        php-version: [8.1]
+        php-version: ['8.0', '8.1', '8.2', '8.3']
+        laravel-version: ['9.x', '10.x', '11.x']
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up PHP ${{ matrix.php-version }}
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: ${{ matrix.php-version }}
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          tools: composer, php-cs-fixer, phpunit, phpstan
 
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-interaction
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ matrix.php-version }}-${{ matrix.laravel-version }}-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-${{ matrix.php-version }}-${{ matrix.laravel-version }}
 
-    - name: Run PHPUnit tests
-      run: vendor/bin/phpunit tests
+      - name: Install dependencies
+        run: composer require laravel/framework:${{ matrix.laravel-version }} --no-update
+      - run: composer install --no-scripts --no-progress --prefer-dist
 
-    - name: Run PHPStan analysis
-      run: vendor/bin/phpstan analyse --memory-limit=1G
+      - name: Run PHPUnit tests
+        run: vendor/bin/phpunit --coverage-text --colors=never
+
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse --memory-limit=2G
