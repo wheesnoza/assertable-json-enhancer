@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 class AssertableJsonEnhancer
 {
-    public function whereValueContains() 
+    public function whereValueContains()
     {
         return function (string $key, string $value) {
             $property = $this->prop($key);
@@ -21,7 +21,7 @@ class AssertableJsonEnhancer
         };
     }
 
-    public function whereGreaterThan() 
+    public function whereGreaterThan()
     {
         return function (string $key, int $value) {
             $property = $this->prop($key);
