@@ -1,5 +1,5 @@
 {
-    "name": "wheesnoza/laravel-assertable-inertia-enhancer",
+    "name": "wheesnoza/assertable-json-enhancer",
     "description": "A Laravel Assertable Json Enhancer Adding More Assertions Functions.",
     "type": "library",
     "keywords": [
