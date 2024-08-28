@@ -1,0 +1,7 @@
+parameters:
+	level: 6
+	paths:
+		- src
+		- tests
+	ignoreErrors:
+		- '#Call to an undefined method Illuminate\\Testing\\Fluent\\AssertableJson#'

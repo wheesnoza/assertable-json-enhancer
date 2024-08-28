@@ -2,17 +2,19 @@
 
 namespace AssertableJsonEnhancer;
 
+use Closure;
+use Illuminate\Support\Arr;
 use PHPUnit\Framework\Assert;
 use Illuminate\Support\Str;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 class AssertableJsonEnhancer
 {
-    public function whereValueContains()
+    public function whereValueContains(): Closure
     {
         return function (string $key, string $value) {
             /** @var AssertableJson $this */
-            $property = $this->prop($key);
+            $property = Arr::get($this->toArray(), $key);
 
             $assertion = Str::of($property)->contains($value);
 
@@ -22,11 +24,11 @@ class AssertableJsonEnhancer
         };
     }
 
-    public function whereGreaterThan()
+    public function whereGreaterThan(): Closure
     {
         return function (string $key, int $value) {
             /** @var AssertableJson $this */
-            $property = $this->prop($key);
+            $property = Arr::get($this->toArray(), $key);
 
             Assert::assertGreaterThan($value, $property, sprintf("%s is not greater than %d", $key, $value));
 
@@ -34,11 +36,11 @@ class AssertableJsonEnhancer
         };
     }
 
-    public function whereGreaterThanOrEqual()
+    public function whereGreaterThanOrEqual(): Closure
     {
         return function (string $key, int $value) {
             /** @var AssertableJson $this */
-            $property = $this->prop($key);
+            $property = Arr::get($this->toArray(), $key);
 
             Assert::assertGreaterThanOrEqual($property, $value, sprintf("%s with value of %d is not equal to %d or greater than %d", $key, $property, $value, $value));
 
@@ -46,11 +48,11 @@ class AssertableJsonEnhancer
         };
     }
 
-    public function whereIsArray()
+    public function whereIsArray(): Closure
     {
         return function (string $key) {
             /** @var AssertableJson $this */
-            $property = $this->prop($key);
+            $property = Arr::get($this->toArray(), $key);
 
             Assert::assertIsArray($property, sprintf("%s are not an array.", $key));
 
@@ -58,11 +60,11 @@ class AssertableJsonEnhancer
         };
     }
 
-    public function whereArrayHasAtLeast()
+    public function whereArrayHasAtLeast(): Closure
     {
         return function (string $key, int $minCount) {
             /** @var AssertableJson $this */
-            $property = $this->prop($key);
+            $property = Arr::get($this->toArray(), $key);
 
             Assert::assertTrue(
                 is_array($property) && count($property) >= $minCount,
@@ -73,11 +75,11 @@ class AssertableJsonEnhancer
         };
     }
 
-    public function whereMatchesPattern()
+    public function whereMatchesPattern(): Closure
     {
         return function (string $key, string $pattern) {
             /** @var AssertableJson $this */
-            $property = $this->prop($key);
+            $property = Arr::get($this->toArray(), $key);
 
             Assert::assertMatchesRegularExpression(
                 $pattern,

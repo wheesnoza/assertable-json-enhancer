@@ -183,7 +183,7 @@ class AssertableJsonEnhancerTest extends TestCase
         $response->assertOk();
 
         $response->assertJson(fn (Assert $json) => $json
-        ->whereMatchesPattern('email', '/^[\w\.-]+@[\w\.-]+\.\w{2,4}$/')
+            ->whereMatchesPattern('email', '/^[\w\.-]+@[\w\.-]+\.\w{2,4}$/')
             ->etc()
         );
     }
