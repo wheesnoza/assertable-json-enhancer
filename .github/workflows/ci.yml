@@ -41,7 +41,7 @@ jobs:
           composer install --no-scripts --no-progress --prefer-dist
 
       - name: Run PHPUnit tests
-        run: vendor/bin/phpunit tests --coverage-text --colors=never
+        run: vendor/bin/phpunit tests
 
       - name: Run PHPStan
         run: vendor/bin/phpstan analyse --memory-limit=2G
