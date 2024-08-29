@@ -37,6 +37,67 @@ class AssertableJsonEnhancerTest extends TestCase
         );
     }
 
+    public function test_where_less_than_should_be_true(): void
+    {
+        app('router')->get('/', fn () => ['number' => 10]);
+
+        $response = $this->get('/');
+
+        $response->assertOk();
+
+        $response->assertJson(fn (Assert $json) => $json
+            ->whereLessThan('number', 11)
+            ->etc()
+        );
+    }
+
+    public function test_where_less_than_should_be_false(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+        
+        app('router')->get('/', fn () => ['number' => 10]);
+
+        $response = $this->get('/');
+
+        $response->assertOk();
+
+        $response->assertJson(fn (Assert $json) => $json
+            ->whereLessThan('number', 10)
+            ->etc()
+        );
+    }
+
+    public function test_where_less_than_or_equal_should_be_true(): void
+    {
+        app('router')->get('/', fn () => ['number1' => 10, 'number2' => 11]);
+
+        $response = $this->get('/');
+
+        $response->assertOk();
+
+        $response->assertJson(fn (Assert $json) => $json
+            ->whereLessThanOrEqual('number1', 10)
+            ->whereGreaterThanOrEqual('number2', 12)
+            ->etc()
+        );
+    }
+
+    public function test_where_less_than_or_equal_should_be_false(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+        
+        app('router')->get('/', fn () => ['number1' => 10]);
+
+        $response = $this->get('/');
+
+        $response->assertOk();
+
+        $response->assertJson(fn (Assert $json) => $json
+            ->whereLessThanOrEqual('number1', 9)
+            ->etc()
+        );
+    }
+
     public function test_where_greater_than_should_be_true(): void
     {
         app('router')->get('/', fn () => ['number' => 11]);

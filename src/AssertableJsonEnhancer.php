@@ -29,6 +29,42 @@ class AssertableJsonEnhancer
         };
     }
 
+    public function whereLessThan(): Closure
+    {
+        return function (string $key, int $value) {
+            /** 
+             * @var AssertableJson $this
+             * @phpstan-ignore-next-line
+             */
+            $property = $this->prop($key);
+            Assert::assertLessThan(
+                $value, 
+                $property,
+                sprintf("%s is not less than %d", $key, $value)
+            );
+
+            return $this;
+        };   
+    }
+
+    public function whereLessThanOrEqual(): Closure
+    {
+        return function (string $key, int $value) {
+            /** 
+             * @var AssertableJson $this
+             * @phpstan-ignore-next-line
+             */
+            $property = $this->prop($key);
+            Assert::assertLessThanOrEqual(
+                $value, 
+                $property,
+                sprintf("%s with value of %d is not equal to %d or greater than %d", $key, $property, $value, $value)
+            );
+
+            return $this;
+        };   
+    }
+
     public function whereGreaterThan(): Closure
     {
         return function (string $key, int $value) {
