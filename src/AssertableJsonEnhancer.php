@@ -58,7 +58,7 @@ class AssertableJsonEnhancer
             Assert::assertLessThanOrEqual(
                 $value, 
                 $property,
-                sprintf("%s with value of %d is not equal to %d or greater than %d", $key, $property, $value, $value)
+                sprintf("%s with value of %d is not equal to %d or less than %d", $key, $property, $value, $value)
             );
 
             return $this;
