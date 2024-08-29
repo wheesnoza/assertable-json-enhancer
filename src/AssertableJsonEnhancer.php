@@ -9,6 +9,9 @@ use Illuminate\Testing\Fluent\AssertableJson;
 
 class AssertableJsonEnhancer
 {
+    /**
+     * Asserts that the string at the given key contains the specified substring.
+     */
     public function whereStringContains(): Closure
     {
         return function (string $key, string $substring) {
@@ -29,7 +32,9 @@ class AssertableJsonEnhancer
         };
     }
 
-
+    /**
+     * Asserts that the value at the given key is less than the specified value.
+     */
     public function whereLessThan(): Closure
     {
         return function (string $key, int $value) {
@@ -48,6 +53,9 @@ class AssertableJsonEnhancer
         };
     }
 
+    /**
+     * Asserts that the value at the given key is less than or equal to the specified value.
+     */
     public function whereLessThanOrEqual(): Closure
     {
         return function (string $key, int $value) {
@@ -66,6 +74,9 @@ class AssertableJsonEnhancer
         };
     }
 
+    /**
+     * Asserts that the value at the given key is greater than the specified value.
+     */
     public function whereGreaterThan(): Closure
     {
         return function (string $key, int $value) {
@@ -85,6 +96,9 @@ class AssertableJsonEnhancer
         };
     }
 
+    /**
+     * Asserts that the value at the given key is greater than or equal to the specified value.
+     */
     public function whereGreaterThanOrEqual(): Closure
     {
         return function (string $key, int $value) {
@@ -104,6 +118,9 @@ class AssertableJsonEnhancer
         };
     }
 
+    /**
+     * Asserts that the value at the given key is an array.
+     */
     public function whereIsArray(): Closure
     {
         return function (string $key) {
@@ -122,6 +139,9 @@ class AssertableJsonEnhancer
         };
     }
 
+    /**
+     * Asserts that the array at the given key has at least the specified number of elements.
+     */
     public function whereArrayHasAtLeast(): Closure
     {
         return function (string $key, int $minCount) {
@@ -142,6 +162,9 @@ class AssertableJsonEnhancer
         };
     }
 
+    /**
+     * Asserts that the array at the given key has exactly the specified number of elements.
+     */
     public function whereArrayHasSize(): Closure
     {
         return function (string $key, int $size) {
@@ -161,6 +184,9 @@ class AssertableJsonEnhancer
         };
     }
 
+    /**
+     * Asserts that the string at the given key starts with the specified prefix.
+     */
     public function whereStringStartsWith(): Closure
     {
         return function (string $key, string $prefix) {
@@ -181,6 +207,9 @@ class AssertableJsonEnhancer
         };
     }
 
+    /**
+     * Asserts that the string at the given key ends with the specified suffix.
+     */
     public function whereStringEndsWith(): Closure
     {
         return function (string $key, string $suffix) {
@@ -201,6 +230,9 @@ class AssertableJsonEnhancer
         };
     }
 
+    /**
+     * Asserts that the string at the given key has exactly the specified length.
+     */
     public function whereExactLength(): Closure
     {
         return function (string $key, int $length) {
@@ -221,7 +253,9 @@ class AssertableJsonEnhancer
         };
     }
 
-
+    /**
+     * Asserts that the string at the given key matches the specified regular expression pattern.
+     */
     public function whereMatchesPattern(): Closure
     {
         return function (string $key, string $pattern) {
@@ -234,13 +268,16 @@ class AssertableJsonEnhancer
             Assert::assertMatchesRegularExpression(
                 $pattern,
                 $property,
-                sprintf("%s do not match regular expresions.", $key)
+                sprintf("%s does not match the regular expression.", $key)
             );
 
             return $this;
         };
     }
 
+    /**
+     * Asserts that the value at the given key is a string.
+     */
     public function whereIsString(): Closure
     {
         return function (string $key) {
@@ -259,6 +296,9 @@ class AssertableJsonEnhancer
         };
     }
 
+    /**
+     * Asserts that the value at the given key is an integer.
+     */
     public function whereIsInteger(): Closure
     {
         return function (string $key) {
@@ -277,6 +317,9 @@ class AssertableJsonEnhancer
         };
     }
 
+    /**
+     * Asserts that the value at the given key is a boolean.
+     */
     public function whereIsBoolean(): Closure
     {
         return function (string $key) {
@@ -295,6 +338,9 @@ class AssertableJsonEnhancer
         };
     }
 
+    /**
+     * Asserts that the value at the given key is a float.
+     */
     public function whereIsFloat(): Closure
     {
         return function (string $key) {
@@ -313,6 +359,9 @@ class AssertableJsonEnhancer
         };
     }
 
+    /**
+     * Asserts that the value at the given key is empty (null, empty string, empty array, etc.).
+     */
     public function whereIsEmpty(): Closure
     {
         return function (string $key) {
@@ -331,6 +380,9 @@ class AssertableJsonEnhancer
         };
     }
 
+    /**
+     * Asserts that the value at the given key is not empty.
+     */
     public function whereIsNotEmpty(): Closure
     {
         return function (string $key) {
@@ -349,6 +401,9 @@ class AssertableJsonEnhancer
         };
     }
 
+    /**
+     * Asserts that the string at the given key is exactly equal to the specified value.
+     */
     public function whereStringEquals(): Closure
     {
         return function (string $key, string $value) {
@@ -368,6 +423,9 @@ class AssertableJsonEnhancer
         };
     }
 
+    /**
+     * Asserts that the string at the given key is not equal to the specified value.
+     */
     public function whereStringNotEquals(): Closure
     {
         return function (string $key, string $value) {
@@ -387,6 +445,9 @@ class AssertableJsonEnhancer
         };
     }
 
+    /**
+     * Asserts that the array at the given key is ordered by the specified key in the given direction.
+     */
     public function whereResultsAreOrderedBy(): Closure
     {
         return function (string $key, string $orderKey, string $direction = 'asc') {
@@ -408,6 +469,9 @@ class AssertableJsonEnhancer
         };
     }
 
+    /**
+     * Asserts that the array at the given key contains the specified value.
+     */
     public function whereResultsContain(): Closure
     {
         return function (string $key, $value) {
@@ -428,6 +492,10 @@ class AssertableJsonEnhancer
         };
     }
 
+    /**
+     * Asserts that the array at the given key matches the specified criteria.
+     * If partialMatch is true, it allows partial matching of the criteria values.
+     */
     public function whereResultsMatchCriteria(): Closure
     {
         return function (string $key, array $criteria, bool $partialMatch = false) {
