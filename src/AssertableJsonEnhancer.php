@@ -454,8 +454,10 @@ class AssertableJsonEnhancer
             /**
              * @var AssertableJson $this
              * @phpstan-ignore-next-line
+             * @var array<mixed> $property
              */
             $property = $this->prop($key);
+
 
             $sorted = collect($property)->sortBy($orderKey, SORT_REGULAR, $direction === 'desc')->values()->all();
 
@@ -478,6 +480,7 @@ class AssertableJsonEnhancer
             /**
              * @var AssertableJson $this
              * @phpstan-ignore-next-line
+             * @var array<mixed> $property
              */
             $property = $this->prop($key);
 
@@ -502,6 +505,7 @@ class AssertableJsonEnhancer
             /**
              * @var AssertableJson $this
              * @phpstan-ignore-next-line
+             * @var array<mixed> $property
              */
             $property = $this->prop($key);
 
