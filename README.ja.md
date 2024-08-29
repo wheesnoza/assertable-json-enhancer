@@ -1,32 +1,26 @@
 # wheesnoza/assertable-json-enhancer
 
-## Available Languages
+`wheesnoza/assertable-json-enhancer`は、Laravelの`AssertableJson`クラスを拡張するパッケージです。このパッケージは、JSONレスポンスをテストする際に、より柔軟で強力なアサーションを可能にします。`Macroable`トレイトを活用し、いくつかの便利なアサーションメソッドを提供します。
 
-- [English](./README.md)
-- [日本語](./README.ja.md)
-- [Español](./README.es.md)
+## インストール
 
-`wheesnoza/assertable-json-enhancer` is a package that extends Laravel's `AssertableJson` class. This package enables more flexible and powerful assertions when testing JSON responses. It leverages the `Macroable` trait to provide several useful assertion methods.
-
-## Installation
-
-You can install this package via Composer:
+このパッケージはComposerを使用してインストールできます。
 
 ```bash
 composer require wheesnoza/assertable-json-enhancer
 ```
 
-## Usage
+## 使い方
 
-After installation, this package automatically registers the necessary macros to the `AssertableJson` class. No additional setup is required.
+インストール後、このパッケージは`AssertableJson`クラスに必要なマクロを自動的に登録します。追加のセットアップは不要です。
 
-### Compatibility
+### 互換性
 
-This package is fully compatible with Laravel Inertia's `AssertableInertia`. You can use the methods provided by `wheesnoza/assertable-json-enhancer` when writing assertions for Inertia responses.
+このパッケージはLaravel Inertiaの`AssertableInertia`と完全に互換性があります。Inertiaレスポンスのアサーションを記述する際に、`wheesnoza/assertable-json-enhancer`が提供するメソッドを使用できます。
 
-## Available Methods
+## 利用可能なメソッド
 
-### Table of Contents
+### 目次
 1. [whereStringContains](#1-wherestringcontainsstring-key-string-substring)
 2. [whereLessThan](#2-wherelessthanstring-key-int-value)
 3. [whereLessThanOrEqual](#3-wherelessthanorequalstring-key-int-value)
@@ -53,7 +47,7 @@ This package is fully compatible with Laravel Inertia's `AssertableInertia`. You
 
 ### 1. `whereStringContains(string $key, string $substring)`
 
-Asserts that the string at the given key contains the specified substring.
+指定されたキーに関連付けられた文字列が、指定された部分文字列を含んでいることをアサートします。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -63,7 +57,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 2. `whereLessThan(string $key, int $value)`
 
-Asserts that the value at the given key is less than the specified value.
+指定されたキーに関連付けられた値が、指定された値より小さいことをアサートします。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -73,7 +67,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 3. `whereLessThanOrEqual(string $key, int $value)`
 
-Asserts that the value at the given key is less than or equal to the specified value.
+指定されたキーに関連付けられた値が、指定された値以下であることをアサートします。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -83,7 +77,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 4. `whereGreaterThan(string $key, int $value)`
 
-Asserts that the value at the given key is greater than the specified value.
+指定されたキーに関連付けられた値が、指定された値より大きいことをアサートします。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -93,7 +87,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 5. `whereGreaterThanOrEqual(string $key, int $value)`
 
-Asserts that the value at the given key is greater than or equal to the specified value.
+指定されたキーに関連付けられた値が、指定された値以上であることをアサートします。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -103,7 +97,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 6. `whereIsArray(string $key)`
 
-Asserts that the value at the given key is an array.
+指定されたキーに関連付けられた値が配列であることをアサートします。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -113,7 +107,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 7. `whereArrayHasAtLeast(string $key, int $minCount)`
 
-Asserts that the array at the given key has at least the specified number of elements.
+指定されたキーに関連付けられた配列が、指定された数以上の要素を持つことをアサートします。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -123,7 +117,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 8. `whereArrayHasSize(string $key, int $size)`
 
-Asserts that the array at the given key has exactly the specified number of elements.
+指定されたキーに関連付けられた配列が、正確に指定された数の要素を持つことをアサートします。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -133,7 +127,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 9. `whereStringStartsWith(string $key, string $prefix)`
 
-Asserts that the string at the given key starts with the specified prefix.
+指定されたキーに関連付けられた文字列が、指定されたプレフィックスで始まることをアサートします。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -143,7 +137,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 10. `whereStringEndsWith(string $key, string $suffix)`
 
-Asserts that the string at the given key ends with the specified suffix.
+指定されたキーに関連付けられた文字列が、指定されたサフィックスで終わることをアサートします。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -153,7 +147,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 11. `whereExactLength(string $key, int $length)`
 
-Asserts that the string at the given key has exactly the specified length.
+指定されたキーに関連付けられた文字列が、正確に指定された長さであることをアサートします。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -163,7 +157,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 12. `whereMatchesPattern(string $key, string $pattern)`
 
-Asserts that the string at the given key matches the specified regular expression pattern.
+指定されたキーに関連付けられた文字列が、指定された正規表現パターンに一致することをアサートします。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -173,7 +167,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 13. `whereIsString(string $key)`
 
-Asserts that the value at the given key is a string.
+指定されたキーに関連付けられた値が文字列であることをアサートします。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -183,7 +177,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 14. `whereIsInteger(string $key)`
 
-Asserts that the value at the given key is an integer.
+指定されたキーに関連付けられた値が整数であることをアサートします。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -193,7 +187,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 15. `whereIsBoolean(string $key)`
 
-Asserts that the value at the given key is a boolean.
+指定されたキーに関連付けられた値がブール値であることをアサートします。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -203,7 +197,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 16. `whereIsFloat(string $key)`
 
-Asserts that the value at the given key is a float.
+指定されたキーに関連付けられた値が浮動小数点数であることをアサートします。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -213,17 +207,19 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 17. `whereIsEmpty(string $key)`
 
-Asserts that the value at the given key is empty (null, empty string, empty array, etc.).
+指定されたキーに関連付けられた値が空であることをアサートします（null、空文字列、空配列など）。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
-    $json->whereIsEmpty('data.name')
+    $json->whereIs
+
+Empty('data.name')
 );
 ```
 
 ### 18. `whereIsNotEmpty(string $key)`
 
-Asserts that the value at the given key is not empty.
+指定されたキーに関連付けられた値が空でないことをアサートします。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -233,7 +229,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 19. `whereStringEquals(string $key, string $value)`
 
-Asserts that the string at the given key is exactly equal to the specified value.
+指定されたキーに関連付けられた文字列が、指定された値と正確に一致することをアサートします。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -243,7 +239,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 20. `whereStringNotEquals(string $key, string $value)`
 
-Asserts that the string at the given key is not equal to the specified value.
+指定されたキーに関連付けられた文字列が、指定された値と一致しないことをアサートします。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -253,19 +249,17 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 21. `whereResultsAreOrderedBy(string $key, string $orderKey, string $direction = 'asc')`
 
-Asserts that the array at the given key is ordered by the specified key in the given direction.
+指定されたキーに関連付けられた配列が、指定されたキーで指定された方向にソートされていることをアサートします。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
     $json->whereResultsAreOrderedBy('data.items', 'id', 'asc')
-
-
 );
 ```
 
 ### 22. `whereResultsContain(string $key, $value)`
 
-Asserts that the array at the given key contains the specified value.
+指定されたキーに関連付けられた配列が、指定された値を含んでいることをアサートします。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -275,7 +269,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 23. `whereResultsMatchCriteria(string $key, array $criteria, bool $partialMatch = false)`
 
-Asserts that the array at the given key matches the specified criteria. If `partialMatch` is true, it allows partial matching of the criteria values.
+指定されたキーに関連付けられた配列が、指定された条件に一致することをアサートします。`partialMatch`がtrueの場合、条件値の部分一致を許可します。
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -283,10 +277,10 @@ $response->assertJson(fn (AssertableJson $json) =>
 );
 ```
 
-## Contributing
+## 貢献
 
-Contributions are welcome! Feel free to submit bug reports or pull requests. If you have any suggestions or improvements, please share them on GitHub.
+貢献は歓迎します！バグレポートやプルリクエストを自由に送信してください。提案や改善点があれば、GitHubで共有してください。
 
-## License
+## ライセンス
 
-This package is open-sourced software licensed under the MIT license.
+このパッケージはMITライセンスの下でオープンソースソフトウェアとして提供されています。

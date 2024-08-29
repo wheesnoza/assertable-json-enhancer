@@ -1,32 +1,26 @@
 # wheesnoza/assertable-json-enhancer
 
-## Available Languages
+`wheesnoza/assertable-json-enhancer` es un paquete que extiende la clase `AssertableJson` de Laravel. Este paquete permite realizar aserciones más flexibles y potentes al probar respuestas JSON. Utiliza el trait `Macroable` para proporcionar varios métodos de aserción útiles.
 
-- [English](./README.md)
-- [日本語](./README.ja.md)
-- [Español](./README.es.md)
+## Instalación
 
-`wheesnoza/assertable-json-enhancer` is a package that extends Laravel's `AssertableJson` class. This package enables more flexible and powerful assertions when testing JSON responses. It leverages the `Macroable` trait to provide several useful assertion methods.
-
-## Installation
-
-You can install this package via Composer:
+Puedes instalar este paquete a través de Composer:
 
 ```bash
 composer require wheesnoza/assertable-json-enhancer
 ```
 
-## Usage
+## Uso
 
-After installation, this package automatically registers the necessary macros to the `AssertableJson` class. No additional setup is required.
+Después de la instalación, este paquete registra automáticamente las macros necesarias en la clase `AssertableJson`. No se requiere configuración adicional.
 
-### Compatibility
+### Compatibilidad
 
-This package is fully compatible with Laravel Inertia's `AssertableInertia`. You can use the methods provided by `wheesnoza/assertable-json-enhancer` when writing assertions for Inertia responses.
+Este paquete es completamente compatible con `AssertableInertia` de Laravel Inertia. Puedes usar los métodos proporcionados por `wheesnoza/assertable-json-enhancer` al escribir aserciones para las respuestas de Inertia.
 
-## Available Methods
+## Métodos Disponibles
 
-### Table of Contents
+### Tabla de Contenidos
 1. [whereStringContains](#1-wherestringcontainsstring-key-string-substring)
 2. [whereLessThan](#2-wherelessthanstring-key-int-value)
 3. [whereLessThanOrEqual](#3-wherelessthanorequalstring-key-int-value)
@@ -53,7 +47,7 @@ This package is fully compatible with Laravel Inertia's `AssertableInertia`. You
 
 ### 1. `whereStringContains(string $key, string $substring)`
 
-Asserts that the string at the given key contains the specified substring.
+Asserta que la cadena asociada con la clave especificada contiene la subcadena indicada.
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -63,7 +57,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 2. `whereLessThan(string $key, int $value)`
 
-Asserts that the value at the given key is less than the specified value.
+Asserta que el valor asociado con la clave especificada es menor que el valor indicado.
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -73,7 +67,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 3. `whereLessThanOrEqual(string $key, int $value)`
 
-Asserts that the value at the given key is less than or equal to the specified value.
+Asserta que el valor asociado con la clave especificada es menor o igual al valor indicado.
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -83,7 +77,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 4. `whereGreaterThan(string $key, int $value)`
 
-Asserts that the value at the given key is greater than the specified value.
+Asserta que el valor asociado con la clave especificada es mayor que el valor indicado.
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -93,7 +87,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 5. `whereGreaterThanOrEqual(string $key, int $value)`
 
-Asserts that the value at the given key is greater than or equal to the specified value.
+Asserta que el valor asociado con la clave especificada es mayor o igual al valor indicado.
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -103,7 +97,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 6. `whereIsArray(string $key)`
 
-Asserts that the value at the given key is an array.
+Asserta que el valor asociado con la clave especificada es un array.
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -113,7 +107,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 7. `whereArrayHasAtLeast(string $key, int $minCount)`
 
-Asserts that the array at the given key has at least the specified number of elements.
+Asserta que el array asociado con la clave especificada tiene al menos el número de elementos indicado.
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -123,7 +117,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 8. `whereArrayHasSize(string $key, int $size)`
 
-Asserts that the array at the given key has exactly the specified number of elements.
+Asserta que el array asociado con la clave especificada tiene exactamente el número de elementos indicado.
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -133,7 +127,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 9. `whereStringStartsWith(string $key, string $prefix)`
 
-Asserts that the string at the given key starts with the specified prefix.
+Asserta que la cadena asociada con la clave especificada comienza con el prefijo indicado.
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -143,7 +137,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 10. `whereStringEndsWith(string $key, string $suffix)`
 
-Asserts that the string at the given key ends with the specified suffix.
+Asserta que la cadena asociada con la clave especificada termina con el sufijo indicado.
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -153,7 +147,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 11. `whereExactLength(string $key, int $length)`
 
-Asserts that the string at the given key has exactly the specified length.
+Asserta que la cadena asociada con la clave especificada tiene exactamente la longitud indicada.
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -161,9 +155,11 @@ $response->assertJson(fn (AssertableJson $json) =>
 );
 ```
 
-### 12. `whereMatchesPattern(string $key, string $pattern)`
+### 12. `whereMatchesPattern
 
-Asserts that the string at the given key matches the specified regular expression pattern.
+(string $key, string $pattern)`
+
+Asserta que la cadena asociada con la clave especificada coincide con el patrón de expresión regular indicado.
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -173,7 +169,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 13. `whereIsString(string $key)`
 
-Asserts that the value at the given key is a string.
+Asserta que el valor asociado con la clave especificada es una cadena.
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -183,7 +179,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 14. `whereIsInteger(string $key)`
 
-Asserts that the value at the given key is an integer.
+Asserta que el valor asociado con la clave especificada es un entero.
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -193,7 +189,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 15. `whereIsBoolean(string $key)`
 
-Asserts that the value at the given key is a boolean.
+Asserta que el valor asociado con la clave especificada es un booleano.
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -203,7 +199,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 16. `whereIsFloat(string $key)`
 
-Asserts that the value at the given key is a float.
+Asserta que el valor asociado con la clave especificada es un flotante.
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -213,7 +209,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 17. `whereIsEmpty(string $key)`
 
-Asserts that the value at the given key is empty (null, empty string, empty array, etc.).
+Asserta que el valor asociado con la clave especificada está vacío (nulo, cadena vacía, array vacío, etc.).
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -223,7 +219,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 18. `whereIsNotEmpty(string $key)`
 
-Asserts that the value at the given key is not empty.
+Asserta que el valor asociado con la clave especificada no está vacío.
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -233,7 +229,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 19. `whereStringEquals(string $key, string $value)`
 
-Asserts that the string at the given key is exactly equal to the specified value.
+Asserta que la cadena asociada con la clave especificada es exactamente igual al valor indicado.
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -243,7 +239,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 20. `whereStringNotEquals(string $key, string $value)`
 
-Asserts that the string at the given key is not equal to the specified value.
+Asserta que la cadena asociada con la clave especificada no es igual al valor indicado.
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -253,19 +249,17 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 21. `whereResultsAreOrderedBy(string $key, string $orderKey, string $direction = 'asc')`
 
-Asserts that the array at the given key is ordered by the specified key in the given direction.
+Asserta que el array asociado con la clave especificada está ordenado por la clave especificada en la dirección indicada.
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
     $json->whereResultsAreOrderedBy('data.items', 'id', 'asc')
-
-
 );
 ```
 
 ### 22. `whereResultsContain(string $key, $value)`
 
-Asserts that the array at the given key contains the specified value.
+Asserta que el array asociado con la clave especificada contiene el valor indicado.
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -275,7 +269,7 @@ $response->assertJson(fn (AssertableJson $json) =>
 
 ### 23. `whereResultsMatchCriteria(string $key, array $criteria, bool $partialMatch = false)`
 
-Asserts that the array at the given key matches the specified criteria. If `partialMatch` is true, it allows partial matching of the criteria values.
+Asserta que el array asociado con la clave especificada coincide con los criterios especificados. Si `partialMatch` es verdadero, permite la coincidencia parcial de los valores de los criterios.
 
 ```php
 $response->assertJson(fn (AssertableJson $json) =>
@@ -283,10 +277,10 @@ $response->assertJson(fn (AssertableJson $json) =>
 );
 ```
 
-## Contributing
+## Contribuciones
 
-Contributions are welcome! Feel free to submit bug reports or pull requests. If you have any suggestions or improvements, please share them on GitHub.
+¡Las contribuciones son bienvenidas! No dudes en enviar informes de errores o solicitudes de extracción. Si tienes alguna sugerencia o mejora, compártela en GitHub.
 
-## License
+## Licencia
 
-This package is open-sourced software licensed under the MIT license.
+Este paquete es software de código abierto licenciado bajo la licencia MIT.
