@@ -11,6 +11,10 @@
   ],
   "license": "MIT",
   "version": "1.0.0",
+  "scripts": {
+    "format": "vendor/bin/php-cs-fixer fix src",
+    "analyse": "vendor/bin/phpstan analyse src tests"
+  },
   "autoload": {
       "psr-4": {
           "AssertableJsonEnhancer\\": "src/",
